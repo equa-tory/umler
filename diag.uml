@@ -1,0 +1,30 @@
+@startuml
+
+entity users {
+  user_id
+  ---
+  username
+}
+
+entity tasks {
+  id
+  ---
+  user_id
+  text
+  due_date
+  completed
+}
+
+entity shared_tasks {
+  id
+  ---
+  task_id
+  user_id
+  accepted
+}
+
+tasks::user_id --> users::user_id
+shared_tasks::user_id --> users::user_id
+shared_tasks::task_id -> tasks::id
+
+@enduml
